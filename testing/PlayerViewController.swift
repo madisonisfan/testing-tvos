@@ -10,6 +10,7 @@ import AVKit
 import SwiftUI
 
 
+
 class PlayerViewController: UIViewController {
     private var player: AVPlayer?
     
@@ -28,6 +29,8 @@ class PlayerViewController: UIViewController {
         let playerView = UIView(frame: view.bounds)
         playerView.backgroundColor = .black
         view.addSubview(playerView)
+        
+        
         
         // Add the player's layer to the player view
        let playerLayer = AVPlayerLayer(player: player)
@@ -81,4 +84,3 @@ struct PlayerViewController: UIViewControllerRepresentable {
 }
  
  */
-

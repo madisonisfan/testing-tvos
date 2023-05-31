@@ -11,26 +11,32 @@ class ViewController: UIViewController {
     
    // let customView = UIView()
     //let playerViewController = PlayerViewController()
+    let button = UIButton(type: .system)
+    let header = UILabel()
     
-    let newView = MyCustomView(frame: CGRect(x: 0, y: 0, width: 2000, height: 1000))
+    //let newView = MyCustomView(frame: CGRect(x: 0, y: 0, width: 2000, height: 1000))
 
     override func viewDidLoad() {
         print("loading main")
         super.viewDidLoad()
         //view.addSubview(newView)
+        header.text = "All Movies"
+        header.frame = CGRect(x: 500, y: 20, width: 250, height: 50)
+        header.textColor = .white
+       
         
-        let button = UIButton(type: .system)
         
-        button.frame = CGRect(x: 20, y: 20, width: 500, height: 100)
-        button.setTitle("Play", for: .normal)
+        button.frame = CGRect(x: 20, y: 100, width: 250, height: 400)
+        button.setTitle("Movie", for: .normal)
         button.addTarget(self, action: #selector(buttonAction(_:)), for: .primaryActionTriggered)
         view.addSubview(button)
+        view.addSubview(header)
     
     }
     
     @objc func buttonAction(_ sender:UIButton!){
         print("button pressed")
-       let playerViewController = PlayerViewController()
+        let playerViewController = PlayerViewController()
        // self.navigationController?.pushViewController(playerViewController, animated: true)
         
         self.present(playerViewController, animated: true, completion: nil)
