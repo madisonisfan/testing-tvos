@@ -13,17 +13,26 @@ class PlayerViewController: UIViewController {
     
     //let overlayView = UIView()
     //let movieLabel = UILabel()
-   let pausePlayButton = UIButton()
-    let videoURL = Bundle.main.url(forResource: "Calculator-styling", withExtension: "mp4")
-    let player = AVPlayer(url: Bundle.main.url(forResource: "Calculator-styling", withExtension: "mp4")!)
+  // let pausePlayButton = UIButton()
+    
+    let customControlView = UIView()
+    
+ 
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        customControlView.frame = CGRect(x: 0, y: 0, width: 200, height: 200)
+        customControlView.backgroundColor = .white
+        customControlView.center = view.center
+        customControlView.alpha = 0
+        view.addSubview(customControlView)
+        
         
        
-       
+        let videoURL = Bundle.main.url(forResource: "Calculator-styling", withExtension: "mp4")
+        let player = AVPlayer(url: videoURL! )
         
        // view.addSubview(pausePlayButton)
         // Step 1: Create an instance of AVPlayer
@@ -47,23 +56,39 @@ class PlayerViewController: UIViewController {
         let playerFrame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
         
         playerViewController.view.frame = playerFrame
-        view.addSubview(playerViewController.view)
         addChild(playerViewController)
-        //view.addSubview(pausePlayButton)
+        view.addSubview(playerViewController.view)
+      
+        
+        view.addSubview(customControlView)
         
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         view.addGestureRecognizer(tapGesture)
     }
     
+    /*
+     
+     let pausePlayButton = PausePlayButton(frame: CGRect(x: 50, y: 50, width: 300, height: 100))
+     pausePlayButton.avPlayer = player
+     view.addSubview(pausePlayButton)
+     pausePlayButton.setup(in: self)
+     */
+    
+   
     @objc func handleTap(_ gesture: UITapGestureRecognizer) {
-           if gesture.state == .ended {
+        print("TAPPPPPED")
+        UIView.animate(withDuration: 0.3) {
+                   self.customControlView.alpha = 1
+        }
+        
+        /*if gesture.state == .ended {
                if isPlaying() {
                    player.pause()
                } else {
                    player.play()
                }
-           }
+           }*/
        }
     
     @objc func pausePlayControls(){
@@ -72,9 +97,9 @@ class PlayerViewController: UIViewController {
     }
     
     
-    func isPlaying () -> Bool {
+    /*func isPlaying () -> Bool {
         return player.rate != 0 && player.error == nil
-    }
+    }*/
 
 }
 

@@ -6,21 +6,34 @@
 //
 
 import UIKit
+import AVKit
 
 class PausePlayButton: UIView {
     
     let label = UILabel()
-    var isPlaying: Bool = false
+    var avPlayer: AVPlayer?
+    var isPlaying: Bool {
+        return avPlayer?.rate != 0 && avPlayer?.error == nil
+    }
     
+    func setup(in container: UIViewController) {
+        let tapGesture = UITapGestureRecognizer(target: container, action: #selector(handleTap))
+        addGestureRecognizer(tapGesture)
+        
+
+         setupView()
+        // addObservers()
+     }
+    /*
     override init(frame: CGRect) {
-        super.init(frame: frame)
+        super.init(frame: frame )
         setupView()
     }
     
     required init?(coder aDecoder: NSCoder) {
        super.init(coder: aDecoder)
        setupView()
-     }
+     }*/
     
     private func setupView() {
         backgroundColor = .blue
@@ -30,13 +43,15 @@ class PausePlayButton: UIView {
         
         addSubview(label)
         
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(self.tapped(_:)))
-              addGestureRecognizer(gesture)
+    
+        
+       /* let gesture = UITapGestureRecognizer(target: self, action: #selector(self.tapped(_:)))
+              addGestureRecognizer(gesture)*/
        
     }
     
-    @objc func tapped(_ sender: UITapGestureRecognizer) {
-           print("tapped")
+    @objc func handleTap(_ sender: UITapGestureRecognizer) {
+           print("tapped!!!")
         }
     
    
