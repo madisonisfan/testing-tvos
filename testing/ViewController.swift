@@ -24,11 +24,12 @@ class ViewController: UIViewController {
         header.frame = CGRect(x: 500, y: 20, width: 250, height: 50)
         header.textColor = .white
        
-        
-        
+    
         button.frame = CGRect(x: 20, y: 100, width: 250, height: 400)
         button.setTitle("Movie", for: .normal)
+
         button.addTarget(self, action: #selector(buttonAction(_:)), for: .primaryActionTriggered)
+        
         view.addSubview(button)
         view.addSubview(header)
     
@@ -37,7 +38,7 @@ class ViewController: UIViewController {
     @objc func buttonAction(_ sender:UIButton!){
         print("button pressed")
         //THIS FIXED THE PROBLEM
-        let rootVC = PlayerViewController()
+        let rootVC = MovieDetailViewController()
         let navVC = UINavigationController(rootViewController: rootVC)
         
         present(navVC, animated: true)
