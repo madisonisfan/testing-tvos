@@ -9,8 +9,89 @@
 import AVKit
 import SwiftUI
 
+class PlayerViewController: UIViewController {
+    
+    let movieTitle  = UILabel()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        view.backgroundColor = .blue
+        movieTitle.text = "The Best Movie"
+        movieTitle.frame = CGRect(x: 20, y: 20, width: 500, height: 100)
+        movieTitle.textColor = .white
+        view.addSubview(movieTitle)
+        
+        
+        let button = UIButton()
+        button.setTitle("Play", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.frame = CGRect(x: 500, y: 600, width: 500, height: 100)
+        view.addSubview(button)
+        
+        button.addTarget(self, action: #selector(buttonAction), for: .primaryActionTriggered)
+        
+        
+        
+        // Step 1: Create an instance of AVPlayer
+        let videoURL = Bundle.main.url(forResource: "Calculator-styling", withExtension: "mp4")
+        let player = AVPlayer(url: videoURL!)
+        
+        // Step 2: Create an instance of AVPlayerViewController
+        let playerViewController = AVPlayerViewController()
+    
+        playerViewController.player = player
+        
+        // Step 3: Customize the player view controller (optional)
+        playerViewController.showsPlaybackControls = false
+       
+        // Step 4: Present the AVPlayerViewController
+        
+        present(playerViewController, animated: true) {
+            player.play() // Start playing the video
+        }
+    }
+    
+    
+    @objc func buttonAction(){
+      
+    }
+
+}
+
+/*
+class PlayerViewController: UIViewController {
+    
+    
+    override func viewDidLoad() {
+        let videoURL = Bundle.main.url(forResource: "Calculator-styling", withExtension: "mp4")
+        let playerItem = AVPlayerItem(url: videoURL!)
+       
+        
+        let playerViewController = AVPlayerViewController()
+        playerViewController.player = AVPlayer(playerItem: playerItem)
+        
+        playerViewController.showsPlaybackControls = false
+       
+        present(playerViewController, animated: true) {
+            playerViewController.player?.play()
+        }
 
 
+        
+        /*
+        present(playerViewController, animated: true) {
+                    player.play() // Start playing the video
+        }*/
+        
+        
+    }
+}
+*/
+
+
+
+/*
 class PlayerViewController: UIViewController {
     private var player: AVPlayer?
     
@@ -56,7 +137,8 @@ class PlayerViewController: UIViewController {
         player?.play()
     }
 }
-
+*/
+ 
 /*
 struct PlayerViewController: UIViewControllerRepresentable {
    // var videoURL: URL

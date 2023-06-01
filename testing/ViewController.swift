@@ -36,10 +36,15 @@ class ViewController: UIViewController {
     
     @objc func buttonAction(_ sender:UIButton!){
         print("button pressed")
-        let playerViewController = PlayerViewController()
-       // self.navigationController?.pushViewController(playerViewController, animated: true)
+        //THIS FIXED THE PROBLEM
+        let rootVC = PlayerViewController()
+        let navVC = UINavigationController(rootViewController: rootVC)
         
-        self.present(playerViewController, animated: true, completion: nil)
+        present(navVC, animated: true)
+        //let playerViewController = PlayerViewController()
+       //navigationController?.pushViewController(playerViewController, animated: true)
+        
+       // self.present(playerViewController, animated: true, completion: nil)
     }
     
     
