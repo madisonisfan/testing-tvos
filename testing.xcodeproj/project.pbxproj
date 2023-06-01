@@ -17,6 +17,7 @@
 		806671252A26C81A006DBAD2 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806671242A26C81A006DBAD2 /* PlayerViewController.swift */; };
 		806671272A26CDC7006DBAD2 /* Calculator-styling.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 806671262A26CC33006DBAD2 /* Calculator-styling.mp4 */; };
 		8066714E2A28190F006DBAD2 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8066714D2A28190F006DBAD2 /* MovieDetailViewController.swift */; };
+		806671502A283820006DBAD2 /* PausePlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8066714F2A283820006DBAD2 /* PausePlayButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		806671242A26C81A006DBAD2 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		806671262A26CC33006DBAD2 /* Calculator-styling.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Calculator-styling.mp4"; sourceTree = "<group>"; };
 		8066714D2A28190F006DBAD2 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
+		8066714F2A283820006DBAD2 /* PausePlayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PausePlayButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,7 +49,6 @@
 		806671022A26B64A006DBAD2 = {
 			isa = PBXGroup;
 			children = (
-				8066714D2A28190F006DBAD2 /* MovieDetailViewController.swift */,
 				8066710D2A26B64A006DBAD2 /* testing */,
 				8066710C2A26B64A006DBAD2 /* Products */,
 			);
@@ -64,6 +65,8 @@
 		8066710D2A26B64A006DBAD2 /* testing */ = {
 			isa = PBXGroup;
 			children = (
+				8066714D2A28190F006DBAD2 /* MovieDetailViewController.swift */,
+				8066714F2A283820006DBAD2 /* PausePlayButton.swift */,
 				806671242A26C81A006DBAD2 /* PlayerViewController.swift */,
 				806671222A26B82D006DBAD2 /* CustomView.swift */,
 				8066710E2A26B64A006DBAD2 /* AppDelegate.swift */,
@@ -155,6 +158,7 @@
 				806671172A26B64A006DBAD2 /* testing.xcdatamodeld in Sources */,
 				8066714E2A28190F006DBAD2 /* MovieDetailViewController.swift in Sources */,
 				806671252A26C81A006DBAD2 /* PlayerViewController.swift in Sources */,
+				806671502A283820006DBAD2 /* PausePlayButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
