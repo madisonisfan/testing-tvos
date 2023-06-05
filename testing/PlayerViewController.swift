@@ -9,59 +9,41 @@
 import AVKit
 import SwiftUI
 
+protocol PlayerDelegate: AnyObject {
+    func playButtonTapped()
+    func pauseButtonTapped()
+    func isPlaying() -> Bool
+}
+
+
+
 class PlayerViewController: UIViewController {
-    
-    //let overlayView = UIView()
-    //let movieLabel = UILabel()
+   
     let pausePlayButton = UIButton(type: .system)
-    
-    let customControlView = UIView()
+    //let customControlView = UIView()
+    let customViewControl = ControlButtonView(frame: CGRect(x: 0, y: 0, width: 1500, height: 200))
     
     //let videoURL = Bundle.main.url(forResource: "Calculator-styling", withExtension: "mp4")
     let player = AVPlayer(url: Bundle.main.url(forResource: "Calculator-styling", withExtension: "mp4")! )
- 
+    
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        customControlView.frame = CGRect(x: 0, y: 0, width: 1500, height: 200)
-        customControlView.backgroundColor = .white
-        customControlView.center = view.center
-        customControlView.alpha = 0
-        
-        pausePlayButton.frame = CGRect(x: 400, y: 100, width:300, height: 100)
-        pausePlayButton.backgroundColor = .black
-        pausePlayButton.setTitle("Pause/Play", for: .normal)
-        pausePlayButton.setTitleColor(.white, for: .normal)
-        pausePlayButton.addTarget(self, action: #selector(pausePlayControls), for: .primaryActionTriggered)
-        customControlView.addSubview(pausePlayButton)
-        customControlView.bringSubviewToFront(pausePlayButton)
+      
        
+        view.bringSubviewToFront(customViewControl)
+        //customViewControl.delegate = self
         
-        //view.addSubview(customControlView)
+        //customControlView.bringSubviewToFront(pausePlayButton)
         
-        
-       
-        
-        
-       // view.addSubview(pausePlayButton)
-        // Step 1: Create an instance of AVPlayer
-       
-        
+
         // Step 2: Create an instance of AVPlayerViewController
         let playerViewController = AVPlayerViewController()
         playerViewController.player = player
         // Step 3: Customize the player view controller (optional)
         playerViewController.showsPlaybackControls = false
-        //playerViewController.playbackControlsIncludeTransportBar = true
-       /* playerViewController.contentOverlayView?.addSubview(overlayView)*/
-        // Step 4: Present the AVPlayerViewController
-        
-        /*KEEP
-        present(playerViewController, animated: true) {
-            player.play() // Start playing the video
-        }*/
+     
         
         player.play()
         let playerFrame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
@@ -69,38 +51,24 @@ class PlayerViewController: UIViewController {
         playerViewController.view.frame = playerFrame
         addChild(playerViewController)
         view.addSubview(playerViewController.view)
-      
-        
-        //view.addSubview(pausePlayButton)
-    
-        view.addSubview(customControlView)
-        
-        
-       // customControlView.setNeedsFocusUpdate()
-       // playerViewController.setNeedsFocusUpdate()
-        
-        //view.bringSubviewToFront(customControlView)
+        view.addSubview(customViewControl)
+        customViewControl.delegate = self
         
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         view.addGestureRecognizer(tapGesture)
     }
+  
     
-    /*
-     
-     let pausePlayButton = PausePlayButton(frame: CGRect(x: 50, y: 50, width: 300, height: 100))
-     pausePlayButton.avPlayer = player
-     view.addSubview(pausePlayButton)
-     pausePlayButton.setup(in: self)
-     */
     
-    /*
     override var preferredFocusEnvironments: [UIFocusEnvironment] {
-        //return [customControlView]
-    }*/
+    return [customViewControl]
+    }
+    
+    /*
     override var preferredFocusedView: UIView? {
            return pausePlayButton
-       }
+       }*/
     
     /*
     override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
@@ -115,7 +83,7 @@ class PlayerViewController: UIViewController {
     @objc func handleTap(_ gesture: UITapGestureRecognizer) {
         print("TAPPPPPED")
         UIView.animate(withDuration: 0.3) {
-                   self.customControlView.alpha = 1
+                   self.customViewControl.alpha = 1
         }
         
         player.pause()
@@ -132,16 +100,28 @@ class PlayerViewController: UIViewController {
            }*/
        }
     
-    @objc func pausePlayControls(){
-        print("pause")
-      
-    }
-    
-    
-    /*func isPlaying () -> Bool {
-        return player.rate != 0 && player.error == nil
-    }*/
+   
 
+}
+
+extension PlayerViewController: PlayerDelegate {
+    func playButtonTapped() {
+          player.play()
+      }
+      
+      func pauseButtonTapped() {
+          player.pause()
+      }
+    
+    func isPlaying () -> Bool {
+        if player.rate != 0 && player.error == nil {
+            // AVPlayer is currently playing
+            return true
+        } else {
+            // AVPlayer is paused or encountered an error
+            return false
+        }
+    }
 }
 
 /*
