@@ -12,6 +12,7 @@ class ViewController: UIViewController {
    // let customView = UIView()
     //let playerViewController = PlayerViewController()
     let button = UIButton(type: .system)
+
     let header = UILabel()
     
     //let newView = MyCustomView(frame: CGRect(x: 0, y: 0, width: 2000, height: 1000))
@@ -27,7 +28,6 @@ class ViewController: UIViewController {
     
         button.frame = CGRect(x: 20, y: 100, width: 250, height: 400)
         button.setTitle("Movie", for: .normal)
-
         button.addTarget(self, action: #selector(buttonAction(_:)), for: .primaryActionTriggered)
         
         view.addSubview(button)

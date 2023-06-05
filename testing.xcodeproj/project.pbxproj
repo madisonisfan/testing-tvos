@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		80097F212A2E912F0025896A /* ControlButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80097F202A2E912F0025896A /* ControlButtonView.swift */; };
 		8066710F2A26B64A006DBAD2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8066710E2A26B64A006DBAD2 /* AppDelegate.swift */; };
 		806671112A26B64A006DBAD2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806671102A26B64A006DBAD2 /* ViewController.swift */; };
 		806671142A26B64A006DBAD2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 806671122A26B64A006DBAD2 /* Main.storyboard */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		80097F202A2E912F0025896A /* ControlButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlButtonView.swift; sourceTree = "<group>"; };
 		8066710B2A26B64A006DBAD2 /* testing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = testing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8066710E2A26B64A006DBAD2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		806671102A26B64A006DBAD2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 				8066711A2A26B64B006DBAD2 /* LaunchScreen.storyboard */,
 				806671152A26B64A006DBAD2 /* testing.xcdatamodeld */,
 				806671262A26CC33006DBAD2 /* Calculator-styling.mp4 */,
+				80097F202A2E912F0025896A /* ControlButtonView.swift */,
 			);
 			path = testing;
 			sourceTree = "<group>";
@@ -154,6 +157,7 @@
 			files = (
 				806671112A26B64A006DBAD2 /* ViewController.swift in Sources */,
 				806671232A26B82D006DBAD2 /* CustomView.swift in Sources */,
+				80097F212A2E912F0025896A /* ControlButtonView.swift in Sources */,
 				8066710F2A26B64A006DBAD2 /* AppDelegate.swift in Sources */,
 				806671172A26B64A006DBAD2 /* testing.xcdatamodeld in Sources */,
 				8066714E2A28190F006DBAD2 /* MovieDetailViewController.swift in Sources */,

@@ -13,26 +13,37 @@ class PlayerViewController: UIViewController {
     
     //let overlayView = UIView()
     //let movieLabel = UILabel()
-  // let pausePlayButton = UIButton()
+    let pausePlayButton = UIButton(type: .system)
     
     let customControlView = UIView()
     
+    //let videoURL = Bundle.main.url(forResource: "Calculator-styling", withExtension: "mp4")
+    let player = AVPlayer(url: Bundle.main.url(forResource: "Calculator-styling", withExtension: "mp4")! )
  
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        customControlView.frame = CGRect(x: 0, y: 0, width: 200, height: 200)
+        customControlView.frame = CGRect(x: 0, y: 0, width: 1500, height: 200)
         customControlView.backgroundColor = .white
         customControlView.center = view.center
         customControlView.alpha = 0
-        view.addSubview(customControlView)
+        
+        pausePlayButton.frame = CGRect(x: 400, y: 100, width:300, height: 100)
+        pausePlayButton.backgroundColor = .black
+        pausePlayButton.setTitle("Pause/Play", for: .normal)
+        pausePlayButton.setTitleColor(.white, for: .normal)
+        pausePlayButton.addTarget(self, action: #selector(pausePlayControls), for: .primaryActionTriggered)
+        customControlView.addSubview(pausePlayButton)
+        customControlView.bringSubviewToFront(pausePlayButton)
+       
+        
+        //view.addSubview(customControlView)
         
         
        
-        let videoURL = Bundle.main.url(forResource: "Calculator-styling", withExtension: "mp4")
-        let player = AVPlayer(url: videoURL! )
+        
         
        // view.addSubview(pausePlayButton)
         // Step 1: Create an instance of AVPlayer
@@ -60,7 +71,15 @@ class PlayerViewController: UIViewController {
         view.addSubview(playerViewController.view)
       
         
+        //view.addSubview(pausePlayButton)
+    
         view.addSubview(customControlView)
+        
+        
+       // customControlView.setNeedsFocusUpdate()
+       // playerViewController.setNeedsFocusUpdate()
+        
+        //view.bringSubviewToFront(customControlView)
         
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
@@ -75,6 +94,23 @@ class PlayerViewController: UIViewController {
      pausePlayButton.setup(in: self)
      */
     
+    /*
+    override var preferredFocusEnvironments: [UIFocusEnvironment] {
+        //return [customControlView]
+    }*/
+    override var preferredFocusedView: UIView? {
+           return pausePlayButton
+       }
+    
+    /*
+    override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
+        if let nextFocusedView = context.nextFocusedView as? customControlView {
+            // Handle focus updates specific to your subview
+        } else {
+            // Handle focus updates for other UI elements
+        }
+    }*/
+    
    
     @objc func handleTap(_ gesture: UITapGestureRecognizer) {
         print("TAPPPPPED")
@@ -82,7 +118,12 @@ class PlayerViewController: UIViewController {
                    self.customControlView.alpha = 1
         }
         
-        /*if gesture.state == .ended {
+        player.pause()
+        
+        
+        
+        /*
+        if gesture.state == .ended {
                if isPlaying() {
                    player.pause()
                } else {
