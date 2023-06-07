@@ -39,6 +39,7 @@ class ViewController: UIViewController {
         print("button pressed")
         //THIS FIXED THE PROBLEM
         let rootVC = MovieDetailViewController()
+       // let rootVC = TestingController()
         let navVC = UINavigationController(rootViewController: rootVC)
         
         present(navVC, animated: true)

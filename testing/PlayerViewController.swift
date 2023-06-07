@@ -19,25 +19,21 @@ protocol PlayerDelegate: AnyObject {
 
 class PlayerViewController: UIViewController {
    
-    let pausePlayButton = UIButton(type: .system)
+   
     //let customControlView = UIView()
-    let customViewControl = ControlButtonView(frame: CGRect(x: 0, y: 0, width: 1500, height: 200))
+    let customViewControl = ControlButtonView(frame: CGRect(x: 0, y: 800, width: 2000, height: 200))
     
     //let videoURL = Bundle.main.url(forResource: "Calculator-styling", withExtension: "mp4")
     let player = AVPlayer(url: Bundle.main.url(forResource: "Calculator-styling", withExtension: "mp4")! )
     
+    let testingButtonView = TestingButtonView(frame: CGRect(x: 500, y: 400, width: 1000, height: 100))
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
       
-       
         view.bringSubviewToFront(customViewControl)
-        //customViewControl.delegate = self
         
-        //customControlView.bringSubviewToFront(pausePlayButton)
-        
-
         // Step 2: Create an instance of AVPlayerViewController
         let playerViewController = AVPlayerViewController()
         playerViewController.player = player
@@ -46,24 +42,27 @@ class PlayerViewController: UIViewController {
      
         
         player.play()
-        let playerFrame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
         
+        let playerFrame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
         playerViewController.view.frame = playerFrame
         addChild(playerViewController)
         view.addSubview(playerViewController.view)
         view.addSubview(customViewControl)
+       //view.addSubview(testingButtonView)
         customViewControl.delegate = self
         
+        /*
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-        view.addGestureRecognizer(tapGesture)
+       let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+       view.addGestureRecognizer(tapGesture)*/
+       
     }
   
     
-    
+    /*
     override var preferredFocusEnvironments: [UIFocusEnvironment] {
     return [customViewControl]
-    }
+    }*/
     
     /*
     override var preferredFocusedView: UIView? {
@@ -82,9 +81,11 @@ class PlayerViewController: UIViewController {
    
     @objc func handleTap(_ gesture: UITapGestureRecognizer) {
         print("TAPPPPPED")
+      
+        /*
         UIView.animate(withDuration: 0.3) {
                    self.customViewControl.alpha = 1
-        }
+        }*/
         
         player.pause()
         
